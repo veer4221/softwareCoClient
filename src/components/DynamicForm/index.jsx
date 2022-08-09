@@ -2,10 +2,7 @@ import React, { useEffect } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormComponents from "./FormComponents";
-import {
-  loginFunction,
-  signupFunction,
-} from "../../utils/submitHandlerFunctions";
+import { loginFunction, signupFunction } from "../../utils/submitHandlerFunctions";
 import { useNavigate } from "react-router-dom";
 const DynamicForm = ({ formData, isReRender }) => {
   const navigate = useNavigate();
@@ -27,23 +24,12 @@ const DynamicForm = ({ formData, isReRender }) => {
   return (
     <div className="container-fluid">
       <Formik
-        initialValues={Object.assign(
-          {},
-          ...formData?.Fields.map((x) => ({ [x.name]: x.initValue }))
-        )}
-        validationSchema={Yup.object(
-          Object.assign(
-            {},
-            ...formData?.Fields.map((x) => ({ [x.name]: x.validateField }))
-          )
-        )}
+        initialValues={Object.assign({}, ...formData?.Fields.map((x) => ({ [x.name]: x.initValue })))}
+        validationSchema={Yup.object(Object.assign({}, ...formData?.Fields.map((x) => ({ [x.name]: x.validateField }))))}
         onSubmit={submitHandle}
       >
         {(formik) => (
-          <div
-            className="container-fluid p-3 mt-1"
-            style={formData?.card?.style}
-          >
+          <div className="container-fluid p-3 mt-1" style={formData?.card?.style}>
             {console.log("formik::", formik)}
             <div className="row">
               <div className="col12">
@@ -55,39 +41,19 @@ const DynamicForm = ({ formData, isReRender }) => {
               <div className="container-fluid ">
                 <div className="row">
                   {formData?.Fields?.map((field) => (
-                    <FormComponents
-                      field={field}
-                      formik={formik}
-                      fieldStyle={formData?.fieldStyle}
-                    />
+                    <FormComponents field={field} formik={formik} fieldStyle={formData?.fieldStyle} />
                   ))}
                 </div>
 
                 <div className="row">
-                  <div
-                    className={`col-12 d-flex justify-content-${
-                      formData?.submitButton?.position || "end"
-                    }`}
-                  >
+                  <div className={`col-12 d-flex justify-content-${formData?.submitButton?.position || "end"}`}>
                     {formData?.resetButton?.required && (
-                      <button
-                        className="btn mt-3 "
-                        type="reset"
-                        style={formData?.resetButton?.style}
-                      >
-                        <span className="ml-3 ">
-                          {formData?.resetButton?.label}
-                        </span>
+                      <button className="btn mt-3 " type="reset" style={formData?.resetButton?.style}>
+                        <span className="ml-3 ">{formData?.resetButton?.label}</span>
                       </button>
                     )}
-                    <button
-                      className="btn  mt-3"
-                      type="submit"
-                      style={formData?.submitButton?.style}
-                    >
-                      <span className="ml-3 ">
-                        {formData?.submitButton?.label}
-                      </span>
+                    <button className="btn  mt-3" type="submit" style={formData?.submitButton?.style}>
+                      <span className="ml-3 ">{formData?.submitButton?.label}</span>
                     </button>
                   </div>
                 </div>

@@ -5,6 +5,8 @@ export { FieldTypes, sidebarObject };
 const FieldTypes = {
   TEXT: "text",
   NUMBER: "number",
+  TEXTAREA: "textarea",
+  FILE: "file",
   EMAIL: "email",
   PASSWORD: "password",
   PSWD: "password",

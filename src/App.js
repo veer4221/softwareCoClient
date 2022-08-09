@@ -5,6 +5,7 @@ import AuthRouts from "./pages/AuthRouts";
 import AuthForms from "./pages/AuthForms";
 import Product from "./pages/Product";
 import ProductInfo from "./pages/ProductInfo";
+import AddEditProduct from "./pages/Product/AddEditProduct";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="product" element={<Product />} />
             <Route path="productInfo" element={<ProductInfo />} />
+            <Route path="addProduct" element={<AddEditProduct />} />
           </Route>
           <Route path="/" element={<Outlet />}>
             <Route path="" element={<AuthForms />} />

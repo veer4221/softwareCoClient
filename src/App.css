@@ -12,3 +12,10 @@
     border: 1px solid #ffffff4d;
     color:  #fff8f8f2 !important;
 }
+
+.word-break-app{
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal; 
+}
