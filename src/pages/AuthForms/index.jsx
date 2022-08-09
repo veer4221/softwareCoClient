@@ -17,7 +17,7 @@ const AuthForms = () => {
         <img src={logo} alt="" />
         <DynamicForm formData={formDataJSON} isReRender={isLogin} />
         <div style={{ color: "white" }}>
-          Not yet member?{" "}
+          Not yet member?
           <span
             style={{ color: "#00ffb4", cursor: "pointer" }}
             onClick={() => setIsLogin(!isLogin)}
