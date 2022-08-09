@@ -6,25 +6,35 @@ export const signupFormJSON = {
   formName: "SignUp ",
   formPosition: "start",
   card: {
-    background: "#e8e8e8a3",
+    style: {
+      background: "#121417",
+      color: "#c5bdbd",
+    },
     shadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
   },
   fieldStyle: {
-    background: "#0000ff21",
-    labelColor: "blue",
+    background: "#83839421",
+    labelColor: "white",
+    color: "white",
   },
   submitButton: {
-    label: "Submit",
+    label: "SignUp",
+    position: "around",
     style: {
       background: "#00800085",
       color: "white",
+      paddingLeft: "20px",
+      paddingRight: "20px",
     },
   },
   resetButton: {
+    required: true,
     label: "Reset",
     style: {
       background: "#d04040",
       color: "white",
+      paddingLeft: "20px",
+      paddingRight: "20px",
     },
   },
   Fields: [
@@ -106,7 +116,7 @@ export const signupFormJSON = {
         lg: "6",
       },
     },
-    
+
     {
       initValue: "",
       validateField: Yup.number().required("Salary is Requird"),

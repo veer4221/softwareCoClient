@@ -3,8 +3,8 @@ import "./_header.scss";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdNotifications, MdApps } from "react-icons/md";
-import logo from "./minilogo.png"
-const Header = ({handleToggleSidebar}) => {
+import logo from "../../../assets/images/minilogo.png";
+const Header = ({ handleToggleSidebar }) => {
   return (
     <div className=" header">
       <FaBars
@@ -12,11 +12,7 @@ const Header = ({handleToggleSidebar}) => {
         size={26}
         onClick={() => handleToggleSidebar()}
       />
-      <img
-        src={logo}
-        alt=""
-        className="header__logo"
-      />
+      <img src={logo} alt="" className="header__logo" />
       {/* <form>
         <input type="text" placeholder="Search" />
         <button type="submit">
@@ -26,12 +22,8 @@ const Header = ({handleToggleSidebar}) => {
       <dic className="header__icons">
         <MdNotifications size={28} />
         <MdApps size={28} />
-        <img
-          src="assets/images/logo512.png"
-          alt="avatar"
-        />
+        <img src="assets/images/logo512.png" alt="avatar" />
       </dic>
-      
     </div>
   );
 };

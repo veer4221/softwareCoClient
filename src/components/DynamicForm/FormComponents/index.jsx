@@ -23,11 +23,7 @@ const FormComponents = ({ field, fieldStyle, formik }) => {
       return (
         <div className={cname}>
           <DynamicInput
-            style={{
-              background: fieldStyle?.background
-                ? fieldStyle?.background
-                : `white`,
-            }}
+            style={fieldStyle}
             fieldStyle={fieldStyle}
             fieldData={field}
             label={field?.label}

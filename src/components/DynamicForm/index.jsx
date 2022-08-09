@@ -7,8 +7,9 @@ import {
   signupFunction,
 } from "../../utils/submitHandlerFunctions";
 import { useNavigate } from "react-router-dom";
-const DynamicForm = ({ formData }) => {
+const DynamicForm = ({ formData, isReRender }) => {
   const navigate = useNavigate();
+
   const submitHandle = (values) => {
     switch (formData["form-slug"]) {
       case "signup-form-user":
@@ -20,6 +21,9 @@ const DynamicForm = ({ formData }) => {
         });
     }
   };
+  useEffect(() => {
+    console.log("useERKJVBSD,MFBVGM,SADF");
+  }, [isReRender]);
   return (
     <div className="container-fluid">
       <Formik
@@ -38,12 +42,7 @@ const DynamicForm = ({ formData }) => {
         {(formik) => (
           <div
             className="container-fluid p-3 mt-1"
-            style={{
-              background: formData?.card?.background
-                ? formData?.card?.background
-                : "#e8e8e8a3",
-              boxShadow: "",
-            }}
+            style={formData?.card?.style}
           >
             {console.log("formik::", formik)}
             <div className="row">
@@ -65,21 +64,30 @@ const DynamicForm = ({ formData }) => {
                 </div>
 
                 <div className="row">
-                  <div className="col-12 d-flex justify-content-end">
+                  <div
+                    className={`col-12 d-flex justify-content-${
+                      formData?.submitButton?.position || "end"
+                    }`}
+                  >
+                    {formData?.resetButton?.required && (
+                      <button
+                        className="btn mt-3 "
+                        type="reset"
+                        style={formData?.resetButton?.style}
+                      >
+                        <span className="ml-3 ">
+                          {formData?.resetButton?.label}
+                        </span>
+                      </button>
+                    )}
                     <button
                       className="btn  mt-3"
                       type="submit"
                       style={formData?.submitButton?.style}
                     >
-                      {formData?.submitButton?.label}
-                    </button>
-                    &nbsp;
-                    <button
-                      className="btn mt-3 ml-3"
-                      type="reset"
-                      style={formData?.resetButton?.style}
-                    >
-                      {formData?.resetButton?.label}
+                      <span className="ml-3 ">
+                        {formData?.submitButton?.label}
+                      </span>
                     </button>
                   </div>
                 </div>

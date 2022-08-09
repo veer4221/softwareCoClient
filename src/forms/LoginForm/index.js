@@ -6,25 +6,35 @@ export const loginFormJSON = {
   formName: "Login ",
   formPosition: "start",
   card: {
-    background: "#e8e8e8a3",
+    style: {
+      background: "#121417",
+      color: "#c5bdbd",
+    },
     shadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
   },
   fieldStyle: {
-    background: "#0000ff21",
-    labelColor: "blue",
+    background: "#83839421",
+    labelColor: "white",
+    color: "white",
   },
   submitButton: {
     label: "Login",
+    position: "around",
     style: {
       background: "#00800085",
       color: "white",
+      paddingLeft: "20px",
+      paddingRight: "20px",
     },
   },
   resetButton: {
+    required: true,
     label: "Reset",
     style: {
       background: "#d04040",
       color: "white",
+      paddingLeft: "20px",
+      paddingRight: "20px",
     },
   },
   Fields: [
@@ -38,10 +48,10 @@ export const loginFormJSON = {
       placeholder: "Email",
       name: "useremail",
       fildSize: {
-        md: "6",
+        md: "12",
         xs: "12",
         sm: "12",
-        lg: "6",
+        lg: "12",
       },
     },
     {
@@ -52,10 +62,10 @@ export const loginFormJSON = {
       placeholder: "Password",
       name: "password",
       fildSize: {
-        md: "6",
+        md: "12",
         xs: "12",
         sm: "12",
-        lg: "6",
+        lg: "12",
       },
     },
   ],
