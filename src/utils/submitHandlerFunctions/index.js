@@ -1,5 +1,6 @@
 import { loginAPI } from "../network/apis";
 import { callAPI } from "../network/networkManager";
+import { popupSucessAndConformationAlert } from "../sweetAlert/alerts";
 
 export { signupFunction, submitLoginFunction };
 
@@ -10,20 +11,17 @@ async function signupFunction(values) {
 
 async function submitLoginFunction(values) {
   try {
-    // alert("ok")
-    console.log("valuesvalues", values)
-    callAPI(loginAPI, {}, "POST", { email: values?.useremail, password: values?.password }).then((data) => console.log("body", data))
-    const loginRes = await callAPI(loginAPI, {}, "POST", { email: values?.useremail, password: values?.password })
-    console.log("loginRes", loginRes)
+    const res = await callAPI(loginAPI, {}, "POST", { email: values?.useremail, password: values?.password })
+    if (res?.data && res?.data?.success) {
+      localStorage?.setItem("token", JSON.stringify(res?.data?.data?.token))
+      localStorage?.setItem("user", JSON.stringify(res?.data?.data?.profile))
+      return true
+    }
+    return false
   } catch (error) {
     console.log(' API Call come execption ... ', error)
+    return false
   }
 
-  var errorArr = [];
-  let user = JSON.parse(localStorage.getItem("user"));
-  if (user.useremail !== values.useremail) errorArr.push("email is not valid");
-  if (user.password !== values.password) errorArr.push("password is not valid");
-  if (errorArr.length === 0)
-    return { message: "sucessFull Login", result: true };
-  return { message: errorArr[0], result: false };
+
 }

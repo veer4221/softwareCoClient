@@ -7,15 +7,13 @@ import { useNavigate } from "react-router-dom";
 const DynamicForm = ({ formData, isReRender }) => {
   const navigate = useNavigate();
 
-  const submitHandle = (values) => {
+  const submitHandle = async (values) => {
     switch (formData["form-slug"]) {
       case "signup-form-user":
         return signupFunction(values).then((data) => alert(data));
       case "login-form-user":
-        return submitLoginFunction(values).then((data) => {
-          alert(data?.message);
-          if (data?.result) return navigate(`/`);
-        });
+        if (await submitLoginFunction(values)) return navigate("/en");
+        return;
     }
   };
   useEffect(() => {

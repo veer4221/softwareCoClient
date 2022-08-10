@@ -37,7 +37,7 @@ export const callAPI = (
   headerType = "Bearer",
   contentType = "application/x-www-form-urlencoded"
 ) => {
-  alert("in network")
+  // alert("in network")
   console.log("network", apiURL,
     params,
     type,

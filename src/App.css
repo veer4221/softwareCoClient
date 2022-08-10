@@ -18,31 +18,7 @@
   word-wrap: break-word;
   hyphens: auto;
   white-space: normal; 
-}
-table {
-  width: 100%;
-  margin-top: 80px;
-  /* border: 1px solid #343a40; */
-  border-collapse: collapse;
-  font-size: 18px;
-}
-
-th,
-td {
-  /* border: 1px solid #343a40; */
-  padding: 16px 24px;
-  text-align: left;
-}
-
-thead th {
-  background-color: #adada536;
-  color: #fff;
-  width: 25%;
-}
-.rct-title{
-  color: #fff
-}
-.rct-icons-fa4 .rct-icon-check::before {
-
-  color: #309b0091;
+} 
+.swal2-container.swal2-center>.swal2-popup {
+  background:#454545f2;
 }
