@@ -1,6 +1,7 @@
 import { MdExitToApp, MdShoppingCart } from "react-icons/md";
 import { SiAuth0 } from "react-icons/si";
 import { BsFillBagCheckFill } from "react-icons/bs";
+import { FaUser } from "react-icons/fa";
 export { FieldTypes, sidebarObject };
 const FieldTypes = {
   TEXT: "text",
@@ -20,7 +21,13 @@ const FieldTypes = {
 
 const sidebarObject = [
   {
-    path: `/`,
+    path: `/en/userList`,
+    name: "User",
+    icons: <FaUser size={23} />,
+    slug: "user",
+  },
+  {
+    path: `/en/product`,
     name: "Products",
     icons: <BsFillBagCheckFill size={23} />,
     slug: "products",
@@ -32,7 +39,7 @@ const sidebarObject = [
     slug: "cart",
   },
   {
-    path: `/`,
+    path: `/en/PermissionList`,
     name: "Permissions",
     icons: <SiAuth0 size={23} />,
   },

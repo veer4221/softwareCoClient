@@ -6,6 +6,11 @@ import AuthForms from "./pages/AuthForms";
 import Product from "./pages/Product";
 import ProductInfo from "./pages/ProductInfo";
 import AddEditProduct from "./pages/Product/AddEditProduct";
+import UserList from "./pages/User";
+import { Permission } from "./pages/Permission";
+import PermissionList from "./pages/Permission/PermissionList";
+import AddRole from "./pages/Permission/AddRole";
+import AssignPermission from "./pages/Permission/AssignPermission";
 
 function App() {
   return (
@@ -17,6 +22,11 @@ function App() {
             <Route path="product" element={<Product />} />
             <Route path="productInfo" element={<ProductInfo />} />
             <Route path="addProduct" element={<AddEditProduct />} />
+            <Route path="UserList" element={<UserList />} />
+            <Route path="Permissions" element={<Permission />} />
+            <Route path="PermissionList" element={<PermissionList />} />
+            <Route path="AddRole" element={<AddRole />} />
+            <Route path="AssignPermission" element={<AssignPermission />} />
           </Route>
           <Route path="/" element={<Outlet />}>
             <Route path="" element={<AuthForms />} />
