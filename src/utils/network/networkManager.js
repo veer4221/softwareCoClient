@@ -1,5 +1,7 @@
 import axios from "axios";
 import https from "https";
+var httpsAgent = require('https-agent');
+// const https = require("https");
 
 axios.interceptors.request.use(
   function (config) {
@@ -35,17 +37,27 @@ export const callAPI = (
   headerType = "Bearer",
   contentType = "application/x-www-form-urlencoded"
 ) => {
+  alert("in network")
+  console.log("network", apiURL,
+    params,
+    type,
+    data)
   // console.log("interseptor", authToken, apiURL, params);
   return new Promise(async function (resolve, reject) {
-    var baseURL = "http://localhost:4000/api";
+    var baseURL = "http://localhost:5000/admin/api/v1";
 
     // var baseURL = getBaseUrl();
     let options = {};
     // At request level
-    const agent = new https.Agent({
-      rejectUnauthorized: false,
-      keepAlive: true,
-    });
+    var agent;
+    try {
+      agent = httpsAgent({
+        rejectUnauthorized: false,
+        keepAlive: true,
+      });
+    } catch (error) {
+      console.log("error", error)
+    }
     try {
       options = {
         method: type,
@@ -71,28 +83,26 @@ export const callAPI = (
         };
         options["headers"] = auth;
       }
-      console.log("options", options);
 
       let response = await axios(options);
       console.log("inNT", response);
       // console.log("inNssT", response?.headers?.["content-type"] );
-      if (response?.headers?.["content-type"] != "application/json") {
-        try {
-          const url = window.URL.createObjectURL(new Blob([response.data]));
-          const link = document.createElement("a");
-          link.href = url;
-          link.setAttribute(
-            "download",
-            `${extraParams.fileName}_${Math.floor(Date.now() / 1000)}${
-              extraParams.fileExtension
-            }`
-          ); //or any other extension
-          document.body.appendChild(link);
-          link.click();
-        } catch (error) {
-          console.log(error);
-        }
-      }
+      // if (response?.headers?.["content-type"] != "application/json") {
+      //   try {
+      //     const url = window.URL.createObjectURL(new Blob([response.data]));
+      //     const link = document.createElement("a");
+      //     link.href = url;
+      //     link.setAttribute(
+      //       "download",
+      //       `${extraParams.fileName}_${Math.floor(Date.now() / 1000)}${extraParams.fileExtension
+      //       }`
+      //     ); //or any other extension
+      //     document.body.appendChild(link);
+      //     link.click();
+      //   } catch (error) {
+      //     console.log(error);
+      //   }
+      // }
       if (response) {
         return resolve(response);
       } else {

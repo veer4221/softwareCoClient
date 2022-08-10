@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormComponents from "./FormComponents";
-import { loginFunction, signupFunction } from "../../utils/submitHandlerFunctions";
+import { submitLoginFunction, signupFunction } from "../../utils/submitHandlerFunctions";
 import { useNavigate } from "react-router-dom";
 const DynamicForm = ({ formData, isReRender }) => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ const DynamicForm = ({ formData, isReRender }) => {
       case "signup-form-user":
         return signupFunction(values).then((data) => alert(data));
       case "login-form-user":
-        return loginFunction(values).then((data) => {
+        return submitLoginFunction(values).then((data) => {
           alert(data?.message);
           if (data?.result) return navigate(`/`);
         });
