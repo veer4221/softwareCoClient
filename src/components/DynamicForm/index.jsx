@@ -2,18 +2,31 @@ import React, { useEffect } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import FormComponents from "./FormComponents";
-import { submitLoginFunction, signupFunction } from "../../utils/submitHandlerFunctions";
+import {
+  submitLoginFunction,
+  signupFunction,
+  submitSignupFunction,
+  submitAssignRoleFunction,
+  submitCreateProductFunction,
+} from "../../utils/submitHandlerFunctions";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const DynamicForm = ({ formData, isReRender }) => {
   const navigate = useNavigate();
-
+  const getUserInfo = useSelector((state) => state?.user?.getUserInfo);
   const submitHandle = async (values) => {
     switch (formData["form-slug"]) {
       case "signup-form-user":
-        return signupFunction(values).then((data) => alert(data));
-      case "login-form-user":
-        if (await submitLoginFunction(values)) return navigate("/en");
+        (await submitSignupFunction(values)) && navigate("/");
         return;
+      case "login-form-user":
+        (await submitLoginFunction(values)) && navigate("/en");
+        return;
+      case "user-role-assign-form-dynamic":
+        (await submitAssignRoleFunction(values, getUserInfo?.id)) && navigate("/en/userList");
+      case "product-form-dynamic":
+        (await submitCreateProductFunction(values)) && navigate("/en/product");
     }
   };
   useEffect(() => {
@@ -22,6 +35,7 @@ const DynamicForm = ({ formData, isReRender }) => {
   return (
     <div className="container-fluid">
       <Formik
+        enableReinitialize
         initialValues={Object.assign({}, ...formData?.Fields.map((x) => ({ [x.name]: x.initValue })))}
         validationSchema={Yup.object(Object.assign({}, ...formData?.Fields.map((x) => ({ [x.name]: x.validateField }))))}
         onSubmit={submitHandle}

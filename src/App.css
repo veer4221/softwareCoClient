@@ -22,3 +22,42 @@
 .swal2-container.swal2-center>.swal2-popup {
   background:#454545f2;
 }
+.swal2-title{
+  color:#c7cafb82 !important;
+}
+
+table {
+  width: 100%;
+  margin-top: 80px;
+  /* border: 1px solid #343a40; */
+  border-collapse: collapse;
+  font-size: 18px;
+}
+
+th,
+td {
+  /* border: 1px solid #343a40; */
+  padding: 16px 24px;
+  text-align: left;
+}
+
+thead th {
+  background-color: #adada536;
+  color: #fff;
+  width: 25%;
+}
+.rct-title{
+  color: #fff
+}
+.back-btn{
+  color: white !important;
+  background: #abdb2f82 !important;
+}
+.add-btn{
+  background: #b9b3b585 !important;
+   color: #ffff !important;
+}
+.rct-icons-fa4 .rct-icon-check::before {
+
+  color: #309b0091;
+}

@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiEdit } from "react-icons/fi";
+import { getUserListAPI } from "../../utils/network/apis";
+import { callAPI } from "../../utils/network/networkManager";
+import { useNavigate } from "react-router-dom";
+
 const UserList = () => {
+  const [userData, setUserData] = useState([]);
+  const navigate = useNavigate();
+
+  const fatchUserData = async () => {
+    try {
+      const res = await callAPI(getUserListAPI, {}, "get");
+      if (res?.data && res?.data?.success) return setUserData(res?.data?.rows);
+    } catch (error) {
+      console.log(" API Call come execption ... ", error);
+    }
+  };
+  useEffect(() => {
+    fatchUserData();
+  }, []);
   return (
     <div>
       <div className="container-fluid">
@@ -24,14 +42,20 @@ const UserList = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th> Width </th>
-                        <td> 80 cm </td>
-                        <td> 80 cm </td>
-                        <td>
-                          <FiEdit style={{ color: "#78c628" }} size={20} />
-                        </td>
-                      </tr>
+                      {userData &&
+                        userData.length > 0 &&
+                        userData.map((row) => (
+                          <tr>
+                            <td>
+                              {row?.firstname} {row?.lastname}
+                            </td>
+                            <td> {row?.email} </td>
+                            <td> {row?.Role?.role_name || ``} </td>
+                            <td>
+                              <FiEdit style={{ color: "#78c628" }} size={20} onClick={() => navigate(`/en/AssignPermission/${row?.id}`)} />
+                            </td>
+                          </tr>
+                        ))}
                     </tbody>
                   </table>
                 </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { FieldTypes } from "../../../utils/staticObjects";
 import DynamicCheckBox from "./DynamicCheckBox";
+import DynamicFileInput from "./DynamicFileInput";
 import DynamicInput from "./DynamicInput";
 import DynamicRadioBox from "./DynamicRadioBox";
 import DynamicSelect from "./DynamicSelect";
@@ -17,12 +18,28 @@ const FormComponents = ({ field, fieldStyle, formik }) => {
     case FieldTypes?.TIME:
     case FieldTypes?.PASSWORD:
     case FieldTypes?.EMAIL:
-    case FieldTypes?.FILE:
+      // case FieldTypes?.FILE:
       // const { md, xs, sm, lg } = field?.fildSize;
       return (
         <div className={cname}>
           <DynamicInput
             style={fieldStyle}
+            fieldStyle={fieldStyle}
+            // component={field?.fieldType}
+            fieldData={field}
+            label={field?.label}
+            name={field?.name}
+            type={field?.fieldType}
+          />
+        </div>
+      );
+    case FieldTypes?.FILE:
+      // const { md, xs, sm, lg } = field?.fildSize;
+      return (
+        <div className={cname}>
+          <DynamicFileInput
+            style={fieldStyle}
+            formik={formik}
             fieldStyle={fieldStyle}
             // component={field?.fieldType}
             fieldData={field}
@@ -51,9 +68,7 @@ const FormComponents = ({ field, fieldStyle, formik }) => {
       return (
         <div className={cname}>
           <DynamicSelect
-            style={{
-              background: fieldStyle?.background ? fieldStyle?.background : `white`,
-            }}
+            style={fieldStyle}
             formik={formik}
             fieldStyle={fieldStyle}
             fieldData={field}
@@ -67,9 +82,7 @@ const FormComponents = ({ field, fieldStyle, formik }) => {
       return (
         <div className={cname}>
           <DynamicRadioBox
-            style={{
-              background: fieldStyle?.background ? fieldStyle?.background : `white`,
-            }}
+            style={fieldStyle}
             formik={formik}
             fieldStyle={fieldStyle}
             fieldData={field}
@@ -83,9 +96,7 @@ const FormComponents = ({ field, fieldStyle, formik }) => {
       return (
         <div className={cname}>
           <DynamicCheckBox
-            style={{
-              background: fieldStyle?.background ? fieldStyle?.background : `white`,
-            }}
+            style={fieldStyle}
             formik={formik}
             fieldStyle={fieldStyle}
             fieldData={field}

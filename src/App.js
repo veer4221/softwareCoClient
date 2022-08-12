@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import "./App.css";
 import AuthRouts from "./pages/AuthRouts";
@@ -20,15 +20,15 @@ function App() {
           <Route path="/en" element={<AuthRouts />}>
             <Route path="" element={<Home />} />
             <Route path="product" element={<Product />} />
-            <Route path="productInfo" element={<ProductInfo />} />
+            <Route path="productInfo/:id" element={<ProductInfo />} />
             <Route path="addProduct" element={<AddEditProduct />} />
             <Route path="UserList" element={<UserList />} />
             <Route path="Permissions" element={<Permission />} />
             <Route path="PermissionList" element={<PermissionList />} />
             <Route path="AddRole" element={<AddRole />} />
-            <Route path="AssignPermission" element={<AssignPermission />} />
+            <Route path="AssignPermission/:id" element={<AssignPermission />} />
           </Route>
-          <Route path="/" element={<Outlet />}>
+          <Route path="/" element={!localStorage.getItem("token") ? <Outlet /> : <Navigate to="/en" replace />}>
             <Route path="" element={<AuthForms />} />
           </Route>
         </Routes>

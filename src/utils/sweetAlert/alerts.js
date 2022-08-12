@@ -3,13 +3,13 @@ import withReactContent from 'sweetalert2-react-content';
 
 const MySwal = withReactContent(Swal);
 
-export function popupMessageAlert(message) {
+export function MessageAlert(message) {
   Swal.fire(message);
 }
-export function popupQuestionAlert(problem, message) {
+export function QuestionAlert(problem, message) {
   Swal.fire(`${problem}?`, message, 'question');
 }
-export function popupMessagePositionAlert(position, message) {
+export function MessagePositionAlert(position, message) {
   Swal.fire({
     position: position,
     icon: 'success',
@@ -18,7 +18,7 @@ export function popupMessagePositionAlert(position, message) {
     timer: 1500
   });
 }
-export function popupSucessAndConformationAlert(
+export function SucessAndConformationAlert(
   isSuccess,
   titel,
   message = ''
@@ -30,7 +30,7 @@ export function popupSucessAndConformationAlert(
     text: message
   });
 }
-export async function popupDeleteConformationAlert(message) {
+export async function DeleteConformationAlert(message) {
   const permission = await Swal.fire({
     title: 'Are you sure?',
     text: message,

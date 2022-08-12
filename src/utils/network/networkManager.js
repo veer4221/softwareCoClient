@@ -45,6 +45,7 @@ export const callAPI = (
   // console.log("interseptor", authToken, apiURL, params);
   return new Promise(async function (resolve, reject) {
     var baseURL = "http://localhost:5000/admin/api/v1";
+    console.log("hello veer1")
 
     // var baseURL = getBaseUrl();
     let options = {};
@@ -58,6 +59,8 @@ export const callAPI = (
     } catch (error) {
       console.log("error", error)
     }
+    console.log("hello veer2")
+
     try {
       options = {
         method: type,
@@ -70,9 +73,11 @@ export const callAPI = (
         rejectUnauthorized: false,
         httpsAgent: agent,
       };
+      console.log("hello veer3")
+
       let currentToken = localStorage.getItem("token");
       if (currentToken && currentToken.length > 0) {
-        let token = headerType + " " + currentToken;
+        let token = currentToken;
 
         const auth = {
           Accept: "application/json",
@@ -83,7 +88,7 @@ export const callAPI = (
         };
         options["headers"] = auth;
       }
-
+      console.log("hello veer4")
       let response = await axios(options);
       console.log("inNT", response);
       // console.log("inNssT", response?.headers?.["content-type"] );

@@ -2,7 +2,7 @@ import React from "react";
 import { ErrorMessage, Field, useField } from "formik";
 const DynamicCheckBox = (props) => {
   const [field, meta] = useField(props);
-  const { label, name } = props;
+  const { label, name, fieldData } = props;
   console.log("values::", field, meta, label, name);
   return (
     <div className="mb-2">
@@ -14,6 +14,7 @@ const DynamicCheckBox = (props) => {
               className={` ${meta.touched && meta.error && "is-invalid"}`}
               type={props?.fieldData?.fieldType}
               name={name}
+              disabled={fieldData.disabled}
               style={{ width: "17px", height: "17px" }}
             />
           </div>

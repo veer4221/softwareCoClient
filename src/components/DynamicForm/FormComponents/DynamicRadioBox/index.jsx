@@ -3,7 +3,7 @@ import { ErrorMessage, Field, useField } from "formik";
 
 const DynamicRadioBox = (props) => {
   const [field, meta] = useField(props);
-  const { label, name } = props;
+  const { label, name, fieldData } = props;
   console.log("values::", field, meta, label, name);
   return (
     <div className="mb-2">
@@ -17,6 +17,7 @@ const DynamicRadioBox = (props) => {
                 type={props?.fieldData?.fieldType}
                 name={name}
                 value={option?.value}
+                disabled={fieldData.disabled}
                 style={{ width: "17px", height: "17px" }}
               />
             </div>

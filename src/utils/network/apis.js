@@ -1,1 +1,9 @@
-export const loginAPI = `/auth/login`
+export const loginAPI = `/auth/login`;
+export const signUpAPI = `/user/Signup`;
+export const getUserListAPI = `/user/getAllUsers`;
+export const roleMenuAPI = `/roleMenu/getallRole`;
+export const updateUserAPI = `/user/updateUser`;
+export const getUserAPI = `/user/getUser`;
+export const addProductAPI = `/ProductRoute/createProduct`;
+export const getAllProductAPI = `/ProductRoute/getAllProduct`;
+export const getProductAPI = `/ProductRoute/getProduct`;

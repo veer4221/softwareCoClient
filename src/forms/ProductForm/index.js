@@ -2,7 +2,7 @@ import { FieldTypes } from "../../utils/staticObjects";
 import * as Yup from "yup";
 
 export const productFormJSON = {
-  ["form-slug"]: "product-form-user",
+  ["form-slug"]: "product-form-dynamic",
   formName: "Product",
   formPosition: "start",
   card: {
@@ -13,7 +13,7 @@ export const productFormJSON = {
       boxShadow: "inset 0 4px 30px rgba(0, 0, 0 , 0.10)",
       backdropFilter: "blur(5px) !important",
       border: "1px solid #ffffff4d",
-      color: "white"
+      color: "white",
     },
     shadow: "rgba(0, 0, 0, 0.1) 0px 4px 12px",
   },
@@ -45,13 +45,11 @@ export const productFormJSON = {
   Fields: [
     {
       initValue: "",
-      validateField: Yup.string()
-        .max(15, "Must be 15 characters or less")
-        .required("Product Name is Requird"),
+      validateField: Yup.string().max(15, "Must be 15 characters or less").required("Product Name is Requird"),
       fieldType: FieldTypes.TEXT,
       label: "Product Name",
       placeholder: "Product Name",
-      name: "productname",
+      name: "product_name",
       fildSize: {
         md: "4",
         xs: "12",
@@ -61,12 +59,11 @@ export const productFormJSON = {
     },
     {
       initValue: "",
-      validateField: Yup.number()
-        .required("M.R.P is Requird"),
+      validateField: Yup.number().required("M.R.P is Requird"),
       fieldType: FieldTypes.NUMBER,
       label: "M.R.P",
       placeholder: "MRP",
-      name: "mrp",
+      name: "m_r_p",
       fildSize: {
         md: "4",
         xs: "12",
@@ -76,11 +73,11 @@ export const productFormJSON = {
     },
     {
       initValue: "",
-      validateField: Yup.mixed().required('Image is required'),
+      validateField: Yup.mixed().required("Image is required"),
       fieldType: FieldTypes.FILE,
       label: "file",
       placeholder: "Image",
-      name: "image",
+      name: "product_image",
       fildSize: {
         md: "4",
         xs: "12",
@@ -90,12 +87,11 @@ export const productFormJSON = {
     },
     {
       initValue: "",
-      validateField: Yup.string()
-        .required("Product Information is Requird"),
+      validateField: Yup.string().required("Product Information is Requird"),
       fieldType: FieldTypes.TEXTAREA,
       label: "Product Information",
-      placeholder: "Email",
-      name: "useremail",
+      placeholder: "product_information",
+      name: "product_information",
       fildSize: {
         md: "12",
         xs: "12",
@@ -103,7 +99,5 @@ export const productFormJSON = {
         lg: "12",
       },
     },
-
-
   ],
 };

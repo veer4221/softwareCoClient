@@ -46,30 +46,30 @@ export const signupFormJSON = {
       fieldType: FieldTypes.TEXT,
       label: "First Name",
       placeholder: "First Name",
-      name: "firstname",
+      name: "firstName",
       fildSize: {
-        md: "4",
+        md: "6",
         xs: "12",
         sm: "12",
-        lg: "4",
+        lg: "6",
       },
     },
-    {
-      initValue: "",
-      validateField: Yup.string()
-        .max(15, "Must be 15 characters or less")
-        .required("Middle Name is Requird"),
-      fieldType: FieldTypes.TEXT,
-      label: "Middle Name",
-      placeholder: "First Name",
-      name: "middlename",
-      fildSize: {
-        md: "4",
-        xs: "12",
-        sm: "12",
-        lg: "4",
-      },
-    },
+    // {
+    //   initValue: "",
+    //   validateField: Yup.string()
+    //     .max(15, "Must be 15 characters or less")
+    //     .required("Middle Name is Requird"),
+    //   fieldType: FieldTypes.TEXT,
+    //   label: "Middle Name",
+    //   placeholder: "First Name",
+    //   name: "middlename",
+    //   fildSize: {
+    //     md: "4",
+    //     xs: "12",
+    //     sm: "12",
+    //     lg: "4",
+    //   },
+    // },
     {
       initValue: "",
       validateField: Yup.string()
@@ -78,12 +78,12 @@ export const signupFormJSON = {
       fieldType: FieldTypes.TEXT,
       label: "Last Name",
       placeholder: "Last Name",
-      name: "lastname",
+      name: "lastName",
       fildSize: {
-        md: "4",
+        md: "6",
         xs: "12",
         sm: "12",
-        lg: "4",
+        lg: "6",
       },
     },
     {
@@ -94,7 +94,7 @@ export const signupFormJSON = {
       fieldType: FieldTypes.EMAIL,
       label: "Email",
       placeholder: "Email",
-      name: "useremail",
+      name: "email",
       fildSize: {
         md: "6",
         xs: "12",
@@ -119,11 +119,14 @@ export const signupFormJSON = {
 
     {
       initValue: "",
-      validateField: Yup.number().required("Salary is Requird"),
-      fieldType: FieldTypes.NUMBER,
-      label: "Salary",
-      placeholder: "Salary",
-      name: "salary",
+      validateField: Yup.string().required("Mobilenumber is Requird").matches(
+        /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+        "Phone number is not valid"
+      ),
+      fieldType: FieldTypes.TEXT,
+      label: "Phone Number",
+      placeholder: "mobileNumber",
+      name: "mobileNumber",
       fildSize: {
         md: "6",
         xs: "12",
@@ -131,49 +134,64 @@ export const signupFormJSON = {
         lg: "6",
       },
     },
+
     {
       initValue: "",
-      validateField: Yup.string().required("Birthdate is Requird"),
-      fieldType: FieldTypes.DATE,
-      label: "BirthDate",
-      placeholder: "birthDate",
-      name: "birthDate",
+      validateField: Yup.string().required("UserName is Requird"),
+      fieldType: FieldTypes.TEXT,
+      label: "User Name",
+      placeholder: "UserName",
+      name: "userName",
       fildSize: {
         md: "6",
-        xs: "6",
-        sm: "6",
+        xs: "12",
+        sm: "12",
         lg: "6",
       },
     },
-    {
-      initValue: "",
-      validateField: Yup.string().required("Study is required!"),
-      fieldType: FieldTypes.SELECT,
-      label: "Study",
-      placeholder: "Study",
-      name: "study",
-      options: [
-        {
-          label: "10 Pass",
-          value: "10pass",
-        },
-        {
-          label: "12 Pass",
-          value: "12pass",
-        },
-        {
-          label: "Graduate",
-          value: "graduate",
-        },
-        {
-          label: "Post Graduate",
-          value: "postgraduate",
-        },
-        {
-          label: "test4",
-          value: "test4",
-        },
-      ],
-    },
+    // {
+    //   initValue: "",
+    //   validateField: Yup.string().required("Birthdate is Requird"),
+    //   fieldType: FieldTypes.DATE,
+    //   label: "BirthDate",
+    //   placeholder: "birthDate",
+    //   name: "birthDate",
+    //   fildSize: {
+    //     md: "6",
+    //     xs: "12",
+    //     sm: "12",
+    //     lg: "6",
+    //   },
+    // },
+    // {
+    //   initValue: "",
+    //   validateField: Yup.string().required("Study is required!"),
+    //   fieldType: FieldTypes.SELECT,
+    //   label: "Study",
+    //   placeholder: "Study",
+    //   name: "study",
+    //   options: [
+    //     {
+    //       label: "10 Pass",
+    //       value: "10pass",
+    //     },
+    //     {
+    //       label: "12 Pass",
+    //       value: "12pass",
+    //     },
+    //     {
+    //       label: "Graduate",
+    //       value: "graduate",
+    //     },
+    //     {
+    //       label: "Post Graduate",
+    //       value: "postgraduate",
+    //     },
+    //     {
+    //       label: "test4",
+    //       value: "test4",
+    //     },
+    //   ],
+    // },
   ],
 };
