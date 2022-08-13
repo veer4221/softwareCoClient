@@ -57,6 +57,10 @@ thead th {
   background: #b9b3b585 !important;
    color: #ffff !important;
 }
+.view-more-btn{
+  color: #ffff !important;
+  background: #e4d510bf important;
+}
 .rct-icons-fa4 .rct-icon-check::before {
 
   color: #309b0091;

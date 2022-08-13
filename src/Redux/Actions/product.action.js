@@ -19,7 +19,7 @@ export const setProductFormJSONAction = (jsonData) => {
     });
   };
 };
-export const getAllProductAction = (jsonData) => {
+export const getAllProductAction = () => {
   return async (dispatch) => {
     dispatch({
       type: productContants.GET_ALL_PRODUCT_REQUEST,

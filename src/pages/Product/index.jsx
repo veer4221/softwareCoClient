@@ -33,11 +33,11 @@ const Product = () => {
                 product.getAllProduct.rows.map((row) => (
                   <ProductCard
                     productData={{
-                      MRP: row?.m_r_p,
+                      MRP: row?.m_r_p ? row?.m_r_p : 0,
                       productImage: row?.product_image,
-                      productInfo: row?.product_information,
+                      productInfo: row?.product_information ? row?.product_information : "test",
                       id: row?.id,
-                      productName: row?.product_name,
+                      productName: row?.product_name ? row?.product_name : "test",
                     }}
                   />
                 ))}

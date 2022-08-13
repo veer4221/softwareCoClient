@@ -1,8 +1,8 @@
-import { addProductAPI, loginAPI, signUpAPI, updateUserAPI } from "../network/apis";
+import { addProductAPI, addRoleAPI, loginAPI, roleUpdateAPI, signUpAPI, updateUserAPI } from "../network/apis";
 import { callAPI } from "../network/networkManager";
 import { SucessAndConformationAlert } from "../sweetAlert/alerts";
 
-export { signupFunction, submitLoginFunction, submitSignupFunction, submitAssignRoleFunction, submitCreateProductFunction };
+export { signupFunction, submitLoginFunction, submitSignupFunction, submitAssignRoleFunction, submitCreateProductFunction, submitCreateRoleFunction, submitRoleUpdateFunction };
 
 async function signupFunction(values) {
   localStorage.setItem("user", JSON.stringify(values));
@@ -58,6 +58,42 @@ async function submitCreateProductFunction(values) {
   console.log("valuesvaluesvalues", values, typeof values?.product_image);
   try {
     const res = await callAPI(addProductAPI, {}, "POST", { ...values, product_image: values.product_imagebase64 });
+    console.log("res", res);
+    if (res?.data && res?.data?.success) {
+      SucessAndConformationAlert(true, res?.data?.message, "");
+      return true;
+    } else if (res?.data && !res?.data?.success) SucessAndConformationAlert(false, res?.data?.error, "");
+    return false;
+  } catch (error) {
+    console.log(" API Call come execption ... ", error);
+    return false;
+  }
+}
+
+async function submitCreateRoleFunction(values) {
+
+  console.log("valuesvaluesvalues", values, typeof values?.product_image);
+  try {
+    const res = await callAPI(addRoleAPI, {}, "POST", { role_name: values.rolename });
+    console.log("res", res);
+    if (res?.data && res?.data?.success) {
+      SucessAndConformationAlert(true, res?.data?.message, "");
+      return true;
+    } else if (res?.data && !res?.data?.success) SucessAndConformationAlert(false, res?.data?.error, "");
+    return false;
+  } catch (error) {
+    console.log(" API Call come execption ... ", error);
+    return false;
+  }
+}
+
+
+
+async function submitRoleUpdateFunction(values) {
+
+  console.log("valuesvaluesvalues", values, typeof values?.product_image);
+  try {
+    const res = await callAPI(roleUpdateAPI, {}, "POST", values);
     console.log("res", res);
     if (res?.data && res?.data?.success) {
       SucessAndConformationAlert(true, res?.data?.message, "");

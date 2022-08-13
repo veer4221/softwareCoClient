@@ -8,6 +8,7 @@ import {
   submitSignupFunction,
   submitAssignRoleFunction,
   submitCreateProductFunction,
+  submitCreateRoleFunction,
 } from "../../utils/submitHandlerFunctions";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -25,8 +26,13 @@ const DynamicForm = ({ formData, isReRender }) => {
         return;
       case "user-role-assign-form-dynamic":
         (await submitAssignRoleFunction(values, getUserInfo?.id)) && navigate("/en/userList");
+        return;
       case "product-form-dynamic":
         (await submitCreateProductFunction(values)) && navigate("/en/product");
+        return;
+      case "add-role-form-dynamic":
+        (await submitCreateRoleFunction(values)) && navigate("/en/PermissionList");
+        return;
     }
   };
   useEffect(() => {

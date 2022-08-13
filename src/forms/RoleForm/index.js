@@ -2,7 +2,7 @@ import { FieldTypes } from "../../utils/staticObjects";
 import * as Yup from "yup";
 
 export const roleFormJSON = {
-  ["form-slug"]: "role-form-dynamic",
+  ["form-slug"]: "add-role-form-dynamic",
   formName: "Dynamic Role",
   formPosition: "start",
   card: {
@@ -45,9 +45,7 @@ export const roleFormJSON = {
   Fields: [
     {
       initValue: "",
-      validateField: Yup.string()
-        .max(15, "Must be 15 characters or less")
-        .required("Role Name is Requird"),
+      validateField: Yup.string().max(15, "Must be 15 characters or less").required("Role Name is Requird"),
       fieldType: FieldTypes.TEXT,
       label: "Role Name",
       placeholder: "Role Name",

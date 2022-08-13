@@ -3,27 +3,31 @@ import DynamicForm from "../../components/DynamicForm";
 import { userRoleFormJSON } from "../../forms/UserRoleForm";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserDataAction, setUserRoleAssignJSONAction } from "../../Redux/Actions";
-import { useParams, useNavigate } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 const AssignPermission = () => {
   let params = useParams();
-  const navigate = useNavigate();
   const [jsonForm, setJsonForm] = useState(userRoleFormJSON);
   const user = useSelector((state) => state?.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(setUserRoleAssignJSONAction(userRoleFormJSON));
-    dispatch(setUserDataAction(params?.id));
+    // debugger;
+    dispatch(setUserRoleAssignJSONAction(userRoleFormJSON, params.id));
+    setTimeout(() => {
+      // dispatch(setUserDataAction(params?.id));
+    }, 4000);
   }, []);
-  useEffect(() => setJsonForm(user?.userRoleAssignForm?.formJson), [user?.userRoleAssignForm?.formJson]);
+  useEffect(() => {}, []);
+  useEffect(() => {
+    setJsonForm(user?.userRoleAssignForm?.formJson);
+  }, [user?.userRoleAssignForm?.formJson]);
   return (
     <>
       <div className="d-flex justify-content-end">
-        <button className="btn back-btn" onClick={() => navigate("/en/userList")}>
+        <button className="btn" ZZZ>
           back
         </button>
       </div>
-      {user?.loading ? <></> : <DynamicForm formData={jsonForm} />}
+      {user && user?.loading ? <></> : <DynamicForm formData={jsonForm} />}
     </>
   );
 };

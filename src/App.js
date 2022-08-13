@@ -23,7 +23,7 @@ function App() {
             <Route path="productInfo/:id" element={<ProductInfo />} />
             <Route path="addProduct" element={<AddEditProduct />} />
             <Route path="UserList" element={<UserList />} />
-            <Route path="Permissions" element={<Permission />} />
+            <Route path="Permissions/:id" element={<Permission />} />
             <Route path="PermissionList" element={<PermissionList />} />
             <Route path="AddRole" element={<AddRole />} />
             <Route path="AssignPermission/:id" element={<AssignPermission />} />

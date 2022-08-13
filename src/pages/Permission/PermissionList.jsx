@@ -1,16 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ProductCard from "../../components/ProductCard";
+import { getAllProductAction } from "../../Redux/Actions";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
+import { getAllRoleAction } from "../../Redux/Actions/role.action";
 const PermissionList = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const role = useSelector((state) => state?.role);
+  useEffect(() => {
+    dispatch(getAllRoleAction());
+  }, []);
   return (
     <div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-12 d-flex justify-content-between pt-3">
             <h3 style={{ color: "#ebe5e5b5" }}>Dynamic Role List </h3>
-            <button
-              className="btn "
-              style={{ background: "#b9b3b585", color: "#ffff" }}
-            >
+            <button className="btn add-btn" onClick={() => navigate(`/en/AddRole`)}>
               Add New Role
             </button>
           </div>
@@ -29,13 +37,18 @@ const PermissionList = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th> Width </th>
+                      {role &&
+                        role?.getAllRole &&
+                        role.getAllRole?.rows &&
+                        role.getAllRole?.rows.map((row) => (
+                          <tr>
+                            <th> {row?.role_name} </th>
 
-                        <td>
-                          <FiEdit style={{ color: "#78c628" }} size={20} />
-                        </td>
-                      </tr>
+                            <td>
+                              <FiEdit style={{ color: "#78c628" }} size={20} onClick={() => navigate(`/en/Permissions/${row?.id}`)} />
+                            </td>
+                          </tr>
+                        ))}
                     </tbody>
                   </table>
                 </div>
