@@ -10,13 +10,9 @@ const AssignPermission = () => {
   const user = useSelector((state) => state?.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    // debugger;
     dispatch(setUserRoleAssignJSONAction(userRoleFormJSON, params.id));
-    setTimeout(() => {
-      // dispatch(setUserDataAction(params?.id));
-    }, 4000);
   }, []);
-  useEffect(() => {}, []);
+
   useEffect(() => {
     setJsonForm(user?.userRoleAssignForm?.formJson);
   }, [user?.userRoleAssignForm?.formJson]);

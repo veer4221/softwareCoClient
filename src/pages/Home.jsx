@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import tech from "../assets/images/tech.png";
 import profilePic from "../assets/images/profile.png";
+import { profileInfo } from "../utils/staticObjects";
 const Home = () => {
   return (
     <div className="container-fluid">
@@ -21,10 +22,10 @@ const Home = () => {
                   </div>
 
                   <div className="row" style={{ color: "white" }}>
-                    {[...Array(5)].map(() => (
+                    {profileInfo.biodata.map((data) => (
                       <>
-                        <div className="col-6 ">Name</div>
-                        <div className="col-6 ">:Veer</div>
+                        <div className="col-6 ">{data.title}</div>
+                        <div className="col-6 ">: {data.value}</div>
                       </>
                     ))}
                   </div>
@@ -40,12 +41,17 @@ const Home = () => {
                   </div>
 
                   <div className="row" style={{ color: "white" }}>
-                    {[...Array(5)].map(() => (
+                    {profileInfo.projectInfo.map((data) => (
                       <>
-                        <div className="col-12 ">
-                          <h5>asdasdaadasd</h5>
+                        <div className="col-12 pt-4">
+                          <h5 style={{ color: "#7f8719" }}>{data.name}</h5>
                         </div>
-                        <div className="col-12 ">:Veer</div>
+                        <div className="col-12  ">
+                          <span style={{ color: "#1e79a4" }}>Information </span>: {data.info}
+                        </div>
+                        <div className="col-12 ">
+                          <span style={{ color: "#1e79a4" }}>Technology </span>: {data.technology}
+                        </div>
                       </>
                     ))}
                   </div>

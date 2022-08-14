@@ -27,13 +27,7 @@ export default (state = initState, action) => {
           formJson: action.payload,
         },
       };
-    case userContants.EMAIL_CHECKER_REQUEST:
-      state = {
-        ...state,
-        loading: true,
-        getUserInfo: {},
-      };
-      break;
+
     case productContants.GET_ALL_PRODUCT_REQUEST:
       state = {
         ...state,
@@ -60,33 +54,7 @@ export default (state = initState, action) => {
         getAllProduct: action.payload,
       };
       break;
-    case userContants.GET_USER__REQUEST:
-      state = {
-        ...state,
-        loading: true,
-      };
-    case userContants.GET_USER__SUCCESS:
-      state = {
-        ...state,
-        loading: false,
-        getUserInfo: action.payload,
-        userRoleAssignForm: {
-          ...state.userRoleAssignForm,
-          formJson: {
-            ...state.userRoleAssignForm.formJson,
-            Fields: [
-              ...state.userRoleAssignForm.formJson.Fields?.map((data) =>
-                data?.name === "role"
-                  ? { ...data, initValue: action.payload?.role_id }
-                  : data?.name === "rolename"
-                  ? { ...data, initValue: action.payload?.firstName }
-                  : data
-              ),
-            ],
-          },
-        },
-      };
-      break;
+
 
     default: {
       return state;

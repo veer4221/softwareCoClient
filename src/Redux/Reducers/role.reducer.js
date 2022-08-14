@@ -42,13 +42,7 @@ export default (state = initState, action) => {
         permissionMenu: action.payload,
       };
       break;
-    case userContants.EMAIL_CHECKER_REQUEST:
-      state = {
-        ...state,
-        loading: true,
-        getUserInfo: {},
-      };
-      break;
+
     case permissionContants.GET_ALL_ROLE_REQUEST:
       state = {
         ...state,
@@ -73,33 +67,6 @@ export default (state = initState, action) => {
         ...state,
         loading: false,
         getAllRole: action.payload,
-      };
-      break;
-    case userContants.GET_USER__REQUEST:
-      state = {
-        ...state,
-        loading: true,
-      };
-    case userContants.GET_USER__SUCCESS:
-      state = {
-        ...state,
-        loading: false,
-        getUserInfo: action.payload,
-        userRoleAssignForm: {
-          ...state.userRoleAssignForm,
-          formJson: {
-            ...state.userRoleAssignForm.formJson,
-            Fields: [
-              ...state.userRoleAssignForm.formJson.Fields?.map((data) =>
-                data?.name === "role"
-                  ? { ...data, initValue: action.payload?.role_id }
-                  : data?.name === "rolename"
-                    ? { ...data, initValue: action.payload?.firstName }
-                    : data
-              ),
-            ],
-          },
-        },
       };
       break;
 
