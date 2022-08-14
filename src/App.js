@@ -11,6 +11,7 @@ import { Permission } from "./pages/Permission";
 import PermissionList from "./pages/Permission/PermissionList";
 import AddRole from "./pages/Permission/AddRole";
 import AssignPermission from "./pages/Permission/AssignPermission";
+import Cart from "./pages/cart";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="Permissions/:id" element={<Permission />} />
             <Route path="PermissionList" element={<PermissionList />} />
             <Route path="AddRole" element={<AddRole />} />
+            <Route path="cart" element={<Cart />} />
             <Route path="AssignPermission/:id" element={<AssignPermission />} />
           </Route>
           <Route path="/" element={!localStorage.getItem("token") ? <Outlet /> : <Navigate to="/en" replace />}>
