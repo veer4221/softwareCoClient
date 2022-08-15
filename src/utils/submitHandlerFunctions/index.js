@@ -1,14 +1,39 @@
-import { addProductAPI, addRoleAPI, loginAPI, roleUpdateAPI, signUpAPI, updateUserAPI } from "../network/apis";
+import { addProductAPI, addRoleAPI, addToCartAPI, loginAPI, removeFromCartAPI, roleUpdateAPI, signUpAPI, updateUserAPI } from "../network/apis";
 import { callAPI } from "../network/networkManager";
-import { SucessAndConformationAlert } from "../sweetAlert/alerts";
+import { DeleteConformationAlert, SucessAndConformationAlert } from "../sweetAlert/alerts";
 
-export { signupFunction, submitLoginFunction, submitSignupFunction, submitAssignRoleFunction, submitCreateProductFunction, submitCreateRoleFunction, submitRoleUpdateFunction };
+export {
+  signupFunction,
+  submitLoginFunction,
+  submitSignupFunction,
+  submitAddToCartFunction,
+  submitAssignRoleFunction,
+  submitCreateProductFunction,
+  submitCreateRoleFunction,
+  submitRoleUpdateFunction,
+  submitRemoveFromCartFunction
+};
 
 async function signupFunction(values) {
   localStorage.setItem("user", JSON.stringify(values));
   return true;
 }
 
+async function submitRemoveFromCartFunction(values, setIsChange) {
+  if (await DeleteConformationAlert("Are you sure?")) {
+    try {
+      const res = await callAPI(removeFromCartAPI, { id: values, status: 0 }, "GET", {});
+      if (res?.data && res?.data?.success) {
+        SucessAndConformationAlert(true, res?.data?.message, "");
+        return setIsChange(new Date())
+      } else if (res?.data && !res?.data?.success) SucessAndConformationAlert(false, res?.data?.error, "");
+      return false;
+    } catch (error) {
+      console.log(" API Call come execption ... ", error);
+      return false;
+    }
+  }
+}
 async function submitLoginFunction(values) {
   try {
     const res = await callAPI(loginAPI, {}, "POST", { email: values?.useremail, password: values?.password });
@@ -71,7 +96,6 @@ async function submitCreateProductFunction(values) {
 }
 
 async function submitCreateRoleFunction(values) {
-
   console.log("valuesvaluesvalues", values, typeof values?.product_image);
   try {
     const res = await callAPI(addRoleAPI, {}, "POST", { role_name: values.rolename });
@@ -87,13 +111,26 @@ async function submitCreateRoleFunction(values) {
   }
 }
 
-
-
 async function submitRoleUpdateFunction(values) {
-
   console.log("valuesvaluesvalues", values, typeof values?.product_image);
   try {
     const res = await callAPI(roleUpdateAPI, {}, "POST", values);
+    console.log("res", res);
+    if (res?.data && res?.data?.success) {
+      SucessAndConformationAlert(true, res?.data?.message, "");
+      return true;
+    } else if (res?.data && !res?.data?.success) SucessAndConformationAlert(false, res?.data?.error, "");
+    return false;
+  } catch (error) {
+    console.log(" API Call come execption ... ", error);
+    return false;
+  }
+}
+
+async function submitAddToCartFunction(values) {
+  console.log("valuesvaluesvalues", values, typeof values?.product_image);
+  try {
+    const res = await callAPI(addToCartAPI, {}, "POST", values);
     console.log("res", res);
     if (res?.data && res?.data?.success) {
       SucessAndConformationAlert(true, res?.data?.message, "");

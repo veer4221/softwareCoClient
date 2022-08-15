@@ -8,11 +8,8 @@ import { useNavigate } from "react-router-dom";
 const AddEditProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const product = useSelector((state) => state?.product);
-
   const [jsonForm, setJsonForm] = useState(productFormJSON);
-
   useEffect(() => {
     dispatch(setProductFormJSONAction(productFormJSON));
   }, []);

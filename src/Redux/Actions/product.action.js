@@ -1,5 +1,5 @@
 
-import { roleMenuAPI, getUserAPI, getAllProductAPI, getProductAPI } from "../../utils/network/apis";
+import { roleMenuAPI, getUserAPI, getAllProductAPI, getProductAPI, getCartAPI } from "../../utils/network/apis";
 import { callAPI } from "../../utils/network/networkManager";
 import { authConstants, productContants, userContants } from "../constants";
 
@@ -11,6 +11,26 @@ export const setProductFormJSONAction = (jsonData) => {
     });
   };
 };
+export const getCartDataAction = (jsonData) => {
+  return async (dispatch) => {
+    dispatch({
+      type: productContants.GET_CART_REQUEST,
+    });
+    try {
+      const res = await callAPI(getCartAPI, {}, "GET", {});
+      console.log("resAction3233", res);
+      if (res?.data && res?.data?.success) {
+        console.log("map", res?.data?.rows.map((data) => data?.Product))
+        dispatch({
+          type: productContants.GET_CART_SUCCESS,
+          payload: res?.data?.rows.map((data) => data?.Product)
+        });
+      }
+    } catch (error) {
+      console.log(" API Call come execption ... ", error);
+    }
+  }
+}
 export const getAllProductAction = () => {
   return async (dispatch) => {
     dispatch({

@@ -8,6 +8,10 @@ const initState = {
   getProductInfo: {},
   loading: false,
   productState: {},
+  cart: {
+    products: []
+  },
+
   getAllProduct: {},
   productForm: {
     isChange: new Date(),
@@ -32,6 +36,19 @@ export default (state = initState, action) => {
       state = {
         ...state,
         loading: true,
+      };
+      break;
+    case productContants.GET_CART_REQUEST:
+      state = {
+        ...state,
+        loading: true,
+      };
+      break;
+    case productContants.GET_CART_SUCCESS:
+      state = {
+        ...state,
+        loading: false,
+        cart: { ...state.cart, products: action.payload }
       };
       break;
     case productContants.GET_PRODUCT_REQUEST:

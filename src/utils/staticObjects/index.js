@@ -2,7 +2,7 @@ import { MdExitToApp, MdShoppingCart } from "react-icons/md";
 import { SiAuth0 } from "react-icons/si";
 import { BsFillBagCheckFill } from "react-icons/bs";
 import { FaUser } from "react-icons/fa";
-export { FieldTypes, sidebarObject, profileInfo };
+export { FieldTypes, sidebarObject, profileInfo, PERMISSIONS };
 const FieldTypes = {
   TEXT: "text",
   NUMBER: "number",
@@ -18,30 +18,51 @@ const FieldTypes = {
   TIME: "time",
   CHECKBOX: "checkbox",
 };
-
+const PERMISSIONS = {
+  PRODUCT: "PRODUCT",
+  ADD_PRODUCT: "ADD_PRODUCT",
+  EDIT_PRODUCT: "EDIT_PRODUCT",
+  VIEW_PRODUCT: "VIEW_PRODUCT",
+  DELETE_PRODUCT: "DELETE_PRODUCT",
+  CART: "CART",
+  ADD_TO_CART: "ADD_TO_CART",
+  REMOVE_FROM_CART: "REMOVE_FROM_CART",
+  PERMISSIONS: "PERMISSIONS",
+  ADD_ROLE_AND_PERMISSION: "ADD_ROLE_AND_PERMISSION",
+  EDIT_ROLE_AND_PERMISSIONS: "EDIT_ROLE_AND_PERMISSIONS",
+  VIEW_CART: "VIEW_CART",
+  USERS: "USERS",
+  VIEW_USERS: "VIEW_USERS",
+  ROLE_ASSIGN: "ROLE_ASSIGN",
+  VIEW_PERMISSIONS: "VIEW_PERMISSIONS"
+}
 const sidebarObject = [
   {
     path: `/en/userList`,
     name: "User",
     icons: <FaUser size={23} />,
     slug: "user",
+    permissions: PERMISSIONS.VIEW_USERS
   },
   {
     path: `/en/product`,
     name: "Products",
     icons: <BsFillBagCheckFill size={23} />,
     slug: "products",
+    permissions: PERMISSIONS.VIEW_PRODUCT
   },
   {
-    path: `/`,
+    path: `/en/cart`,
     name: "Cart",
     icons: <MdShoppingCart size={23} />,
     slug: "cart",
+    permissions: PERMISSIONS.VIEW_CART
   },
   {
     path: `/en/PermissionList`,
     name: "Permissions",
     icons: <SiAuth0 size={23} />,
+    permissions: PERMISSIONS.VIEW_PERMISSIONS
   },
   {
     path: `/`,

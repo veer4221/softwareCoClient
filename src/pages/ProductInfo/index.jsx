@@ -3,6 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductInfoAction } from "../../Redux/Actions";
 import { useParams, useNavigate } from "react-router-dom";
+import { submitAddToCartFunction } from "../../utils/submitHandlerFunctions";
+import { isSingalPermissionsAvailable } from "../../utils/PermissionChecker";
+import { PERMISSIONS } from "../../utils/staticObjects";
 
 const ProductInfo = () => {
   let params = useParams();
@@ -37,9 +40,19 @@ const ProductInfo = () => {
                       <img src={product?.getProductInfo?.Productdata?.product_image} width="250px" height="250px" />
                     </div>
                     <div className="d-flex justify-content-center mt-4">
-                      <button className="btn view-more-btn" style={{ background: "#e4d510bf" }}>
-                        Add To Cart
-                      </button>
+                      {isSingalPermissionsAvailable(PERMISSIONS.ADD_TO_CART) && (
+                        <button
+                          className="btn view-more-btn"
+                          style={{ background: "#e4d510bf" }}
+                          onClick={() =>
+                            submitAddToCartFunction({
+                              product_id: product?.getProductInfo?.Productdata?.id,
+                            })
+                          }
+                        >
+                          Add To Cart
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>
