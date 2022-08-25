@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import "./App.css";
 import AuthRouts from "./pages/AuthRouts";
@@ -12,6 +18,7 @@ import PermissionList from "./pages/Permission/PermissionList";
 import AddRole from "./pages/Permission/AddRole";
 import AssignPermission from "./pages/Permission/AssignPermission";
 import Cart from "./pages/cart";
+import DynamicTable from "./pages/DynamicTable";
 
 function App() {
   return (
@@ -21,6 +28,7 @@ function App() {
           <Route path="/en" element={<AuthRouts />}>
             <Route path="" element={<Home />} />
             <Route path="product" element={<Product />} />
+            <Route path="DynamicTable" element={<DynamicTable />} />
             <Route path="productInfo/:id" element={<ProductInfo />} />
             <Route path="addProduct" element={<AddEditProduct />} />
             <Route path="UserList" element={<UserList />} />
@@ -30,7 +38,16 @@ function App() {
             <Route path="cart" element={<Cart />} />
             <Route path="AssignPermission/:id" element={<AssignPermission />} />
           </Route>
-          <Route path="/" element={!localStorage.getItem("token") ? <Outlet /> : <Navigate to="/en" replace />}>
+          <Route
+            path="/"
+            element={
+              !localStorage.getItem("token") || true ? (
+                <Outlet />
+              ) : (
+                <Navigate to="/en" replace />
+              )
+            }
+          >
             <Route path="" element={<AuthForms />} />
           </Route>
         </Routes>
