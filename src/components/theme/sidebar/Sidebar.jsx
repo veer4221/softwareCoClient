@@ -18,10 +18,15 @@ const Sidebar = ({ sidebar, handleToggleSidebar }) => {
     }
   };
   return (
-    <nav className={sidebar ? "sidebar open" : "sidebar"} onClick={() => handleToggleSidebar(false)}>
+    <nav
+      className={sidebar ? "sidebar open" : "sidebar"}
+      onClick={() => handleToggleSidebar(false)}
+    >
       {sidebarObject.map((menu) => (
         <>
-          {(isSingalPermissionsAvailable(menu.permissions) || menu.slug === "logout") && (
+          {(isSingalPermissionsAvailable(menu.permissions) ||
+            true ||
+            menu.slug === "logout") && (
             <>
               {menu.slug === "logout" && <hr />}
               <li onClick={() => onClickFunc(menu)}>

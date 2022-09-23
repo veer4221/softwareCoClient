@@ -16,21 +16,31 @@ export const DemoTableColumns = [
     type: TableColumnType.TEXT,
   },
   {
+    title: "Name",
+    property: "name",
+    type: TableColumnType.TEXT,
+  },
+  {
     title: "All",
-    property: "allNotifs",
-    type: TableColumnType.SUMMARY,
-    maxLength: 30,
+    property: "avtar",
+    type: TableColumnType.AVATAR_AND_NAME,
+    widthCell: "1%",
   },
   {
     title: "Push",
     property: "pushNotifs",
     type: TableColumnType.DROPDOWN,
   },
-  {
-    title: "Email",
-    property: "emailNotifs",
-    type: TableColumnType.IMAGE,
-  },
+  // {
+  //   title: "Email",
+  //   property: "emailNotifs",
+  //   type: TableColumnType.IMAGE,
+  // },
+  // {
+  //   title: "Time",
+  //   property: "timeField",
+  //   type: TableColumnType.DATE,
+  // },
   {
     title: "Text",
     property: "smsNotifs",
@@ -51,7 +61,8 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: false,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
   {
     name: "Push",
@@ -59,7 +70,8 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: true,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
   {
     name: "Push",
@@ -68,7 +80,8 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: false,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
   {
     name: "Push",
@@ -76,7 +89,8 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: true,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
   {
     name: "Push",
@@ -84,7 +98,8 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: true,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
   {
     name: "Push",
@@ -92,7 +107,8 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: true,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
   {
     name: "Push",
@@ -100,7 +116,8 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: true,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
   {
     name: "Push",
@@ -108,7 +125,8 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: true,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
   {
     name: "Push",
@@ -116,7 +134,8 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: true,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
   {
     name: "Push",
@@ -124,6 +143,7 @@ export const ResData = [
     pushNotifs: "test",
     emailNotifs: "https://source.unsplash.com/user/c_v_r",
     smsNotifs: "tet4221",
-    checkboxselect: true,
+    timeField: "05/22/2012 11:12",
+    avtar: "my name",
   },
 ];

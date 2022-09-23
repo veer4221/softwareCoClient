@@ -6,6 +6,8 @@ import ImageCell from "./ImageCell";
 import SummaryCell from "./SummaryCell";
 import TextCell from "./TextCell";
 import { useDispatch, useSelector } from "react-redux";
+import DateCell from "./DateCell";
+import AvtarCell from "./AvtarCell";
 
 const TableCellType = ({ row, tableData, rowIndex }) => {
   const dispatch = useDispatch();
@@ -30,6 +32,12 @@ const TableCellType = ({ row, tableData, rowIndex }) => {
             return (
               <CheckboxCell row={row} column={column} rowIndex={rowIndex} />
             );
+          case TableColumnType.DATE_TIME:
+          case TableColumnType.DATE:
+          case TableColumnType.TIME:
+            return <DateCell row={row} column={column} rowIndex={rowIndex} />;
+          case TableColumnType.AVATAR_AND_NAME:
+            return <AvtarCell row={row} column={column} rowIndex={rowIndex} />;
         }
       })}
     </tr>
